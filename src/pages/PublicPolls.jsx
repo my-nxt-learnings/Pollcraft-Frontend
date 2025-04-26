@@ -10,7 +10,7 @@ function PublicPolls() {
   useEffect(() => {
     const fetchPublicPolls = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/polls/public');
+        const res = await fetch('https://pollcraft-backend.onrender.com/api/polls/public');
         const data = await res.json();
 
         if (res.ok) {
@@ -31,7 +31,7 @@ function PublicPolls() {
     if (!token) return alert('Please log in to vote');
 
     try {
-      const res = await fetch('http://localhost:5000/api/polls/vote', {
+      const res = await fetch('https://pollcraft-backend.onrender.com/api/polls/vote', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

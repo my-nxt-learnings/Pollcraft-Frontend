@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api'; // update when deployed
+const API_BASE = 'https://pollcraft-backend.onrender.com/api'; // update when deployed
 
 export async function registerUser(userData) {
   const res = await fetch(`${API_BASE}/auth/register`, {

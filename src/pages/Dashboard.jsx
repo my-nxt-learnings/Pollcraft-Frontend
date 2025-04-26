@@ -17,7 +17,7 @@ function Dashboard() {
 
     const fetchUserPolls = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/polls/mypolls', {
+        const res = await fetch('https://pollcraft-backend.onrender.com/api/polls/mypolls', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -40,7 +40,7 @@ function Dashboard() {
 
   const handleVote = async (pollId, optionIndex) => {
     try {
-      const res = await fetch('http://localhost:5000/api/polls/vote', {
+      const res = await fetch('https://pollcraft-backend.onrender.com/api/polls/vote', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

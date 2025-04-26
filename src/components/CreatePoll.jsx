@@ -24,7 +24,7 @@ function CreatePoll() {
     if (!token) return setMessage('Please login to create a poll');
     console.log("Token:", token);
 
-    const res = await fetch('http://localhost:5000/api/polls/create', {
+    const res = await fetch('https://pollcraft-backend.onrender.com/api/polls/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

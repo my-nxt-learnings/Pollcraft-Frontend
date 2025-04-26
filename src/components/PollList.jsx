@@ -7,7 +7,7 @@ function PollsList() {
   // Fetch polls from backend
   useEffect(() => {
     const fetchPolls = async () => {
-      const res = await fetch('http://localhost:5000/api/polls/public');
+      const res = await fetch('https://pollcraft-backend.onrender.com/api/polls/public');
       const data = await res.json();
       setPolls(data);
     };
@@ -19,7 +19,7 @@ function PollsList() {
     const token = localStorage.getItem('token');
     if (!token) return setMessage('Please login to vote');
 
-    const res = await fetch('http://localhost:5000/api/polls/vote', {
+    const res = await fetch('https://pollcraft-backend.onrender.com/api/polls/vote', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
