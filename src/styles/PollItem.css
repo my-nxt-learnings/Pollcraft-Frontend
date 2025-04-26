@@ -1,0 +1,27 @@
+.poll-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .poll-item h3 {
+    margin-bottom: 10px;
+  }
+  
+  .poll-item ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .poll-item li {
+    margin: 5px 0;
+  }
+  
+  .poll-item button {
+    margin-left: 10px;
+    padding: 3px 8px;
+    cursor: pointer;
+  }
+  

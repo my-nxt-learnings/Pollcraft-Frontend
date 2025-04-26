@@ -1,0 +1,36 @@
+.create-poll {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .create-poll h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .create-poll input,
+  .create-poll button,
+  .create-poll label {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .create-poll button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .create-poll button:hover {
+    background-color: #0056b3;
+  }
+  
