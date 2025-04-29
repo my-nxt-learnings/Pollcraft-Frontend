@@ -69,15 +69,17 @@ function CreatePoll() {
         ))}
 
         <button type="button" onClick={addOption}>Add Option</button>
-
+        <div className='label-checkbox'>
         <label>
           Public Poll:
+          </label> 
           <input
             type="checkbox"
             checked={isPublic}
             onChange={(e) => setIsPublic(e.target.checked)}
           />
-        </label>
+          </div>
+        
 
         <label>
           Expiration Date (optional):

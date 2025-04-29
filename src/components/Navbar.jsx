@@ -18,6 +18,7 @@ function Navbar() {
         {isLoggedIn ? (
           <>
             <Link to="/dashboard">Dashboard</Link>
+            <Link to="/public" >Public_Polls</Link>
             <button onClick={handleLogout} className="logout-btn">Logout</button>
           </>
         ) : (

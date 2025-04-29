@@ -25,7 +25,7 @@ function App() {
   } />
   <Route path="/" element={<PollList />} />
   <Route path="/create" element={<RequireAuth><CreatePoll /></RequireAuth>} />
-  <Route path="/public" element={<PublicPolls />} />
+  <Route path="/public" element={<RequireAuth><PublicPolls /></RequireAuth>} />
 </Routes>
       </div>
     </Router>

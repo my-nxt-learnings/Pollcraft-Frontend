@@ -13,7 +13,7 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h1>🎯 Welcome to PollCraft</h1>
+      <h1>Welcome to PollCraft</h1>
       <p>
         PollCraft is a simple and intuitive app that lets you <strong>create, vote, and manage polls</strong> with ease. 
         Whether you're making decisions with friends, gathering opinions, or running quick surveys — PollCraft has you covered.
@@ -21,14 +21,14 @@ function Home() {
 
       <div className="home-buttons">
         {isLoggedIn ? (
-          <button onClick={() => navigate('/dashboard')}>📊 Go to Dashboard</button>
+          <button onClick={() => navigate('/dashboard')}>Go to Dashboard</button>
         ) : (
           <>
-            <button onClick={() => navigate('/login')}>🔐 Login</button>
-            <button onClick={() => navigate('/register')}>📝 Register</button>
+            <button onClick={() => navigate('/login')}>Login</button>
+            <button onClick={() => navigate('/register')}>Register</button>
           </>
         )}
-        <button onClick={() => navigate('/public')}>🌍 View Public Polls</button>
+        <button onClick={() => navigate('/public')}>View Public Polls</button>
       </div>
     </div>
   );

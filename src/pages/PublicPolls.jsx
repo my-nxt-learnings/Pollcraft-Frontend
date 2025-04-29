@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+
 import "../styles/PublicPolls.css"
 
 function PublicPolls() {
@@ -57,6 +59,37 @@ function PublicPolls() {
     }
   };
 
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AA46BE', '#FF66C4'];
+
+function renderPollChart(options) {
+  const data = options.map(option => ({
+    name: option.text,
+    value: option.votes
+  }));
+
+  return (
+    <PieChart width={300} height={300}>
+      <Pie
+        data={data}
+        dataKey="value"
+        nameKey="name"
+        cx="50%"
+        cy="50%"
+        outerRadius={100}
+        fill="#8884d8"
+        label
+      >
+        {data.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        ))}
+      </Pie>
+      <Tooltip />
+      <Legend />
+    </PieChart>
+  );
+}
+
+
   return (
     <div>
       <h2>Public Polls</h2>
@@ -67,6 +100,7 @@ function PublicPolls() {
             <div key={poll._id} className='eachpoll'>
               <strong>{poll.question}</strong>
               <p><em>Created by: {poll.createdBy.username}</em></p>
+              <div className='options-chart'>
               <div>
                 {poll.options.map((option, index) => (
                   <div key={index}>
@@ -75,6 +109,10 @@ function PublicPolls() {
                     </button>
                   </div>
                 ))}
+              </div>
+              <div>
+              {renderPollChart(poll.options)}
+              </div>
               </div>
             </div>
           ))
