@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 
+
 import "../styles/PublicPolls.css"
 
 function PublicPolls() {
@@ -68,56 +69,59 @@ function renderPollChart(options) {
   }));
 
   return (
-    <PieChart width={300} height={300}>
-      <Pie
-        data={data}
-        dataKey="value"
-        nameKey="name"
-        cx="50%"
-        cy="50%"
-        outerRadius={100}
-        fill="#8884d8"
-        label
-      >
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-      <Tooltip />
-      <Legend />
-    </PieChart>
+    <PieChart width={250} height={250}>
+  <Pie
+    data={data}
+    dataKey="value"
+    nameKey="name"
+    cx="50%"
+    cy="50%"
+    outerRadius={80}
+    fill="#8884d8"
+   
+  >
+    {data.map((entry, index) => (
+      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+    ))}
+  </Pie>
+  <Tooltip />
+  <Legend  wrapperStyle={{ marginTop: '50px' }}/>
+</PieChart>
   );
 }
 
 
   return (
-    <div>
-      <h2>Public Polls</h2>
-      {message && <p>{message}</p>}
-      <div>
+    <div className="public-polls-container">
+      <h2 className="public-polls-heading">Public Polls</h2>
+      {message && <p className="error-message">{message}</p>}
+      <div className="polls-list">
         {publicPolls.length > 0 ? (
           publicPolls.map((poll) => (
-            <div key={poll._id} className='eachpoll'>
-              <strong>{poll.question}</strong>
-              <p><em>Created by: {poll.createdBy.username}</em></p>
-              <div className='options-chart'>
-              <div>
-                {poll.options.map((option, index) => (
-                  <div key={index}>
-                    <button onClick={() => handleVote(poll._id, index)}>
-                      {option.text} ({option.votes} votes)
-                    </button>
-                  </div>
-                ))}
-              </div>
-              <div>
-              {renderPollChart(poll.options)}
-              </div>
+            <div key={poll._id} className="eachpoll">
+              <strong className="poll-question">{poll.question}</strong>
+              <p className="poll-creator">
+                <em>Created by: {poll.createdBy.username}</em>
+              </p>
+              <div className="options-chart">
+                <div className="poll-options">
+                  {poll.options.map((option, index) => (
+                    <div key={index} className="poll-option">
+                      <button
+                        className="vote-button"
+                        onClick={() => handleVote(poll._id, index)}
+                      >
+                        {option.text} ({option.votes} votes)
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <div className="poll-chart">{renderPollChart(poll.options)}</div>
               </div>
             </div>
           ))
         ) : (
-          <p>No public polls available at the moment.</p>
+          <p className="no-polls">No public polls available at the moment.</p>
         )}
       </div>
     </div>

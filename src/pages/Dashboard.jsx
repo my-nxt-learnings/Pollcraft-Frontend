@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaRegTrashAlt } from "react-icons/fa";
 import '../styles/Dashboard.css';
 
 function Dashboard() {
@@ -69,6 +70,32 @@ function Dashboard() {
     return poll.votedUsers.includes(userId);
   };
 
+  const handleDelete = async (pollId) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this poll?");
+    if (!confirmDelete) return;
+  
+    try {
+      const res = await fetch(`https://pollcraft-backend.onrender.com/api/polls/${pollId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+  
+      const data = await res.json();
+  
+      if (res.ok) {
+        alert('Poll deleted successfully');
+        setUserPolls(prevPolls => prevPolls.filter(p => p._id !== pollId));
+      } else {
+        alert(data.message || 'Failed to delete poll');
+      }
+    } catch (err) {
+      alert('Error deleting poll');
+    }
+  };
+  
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -84,7 +111,10 @@ function Dashboard() {
       {userPolls.length > 0 ? (
         userPolls.map((poll) => (
           <div key={poll._id} className="poll-card">
-            <h4>{poll.question}</h4>
+             <div className="poll-header">
+    <h4>{poll.question}</h4>
+    <button className="delete-btn" onClick={() => handleDelete(poll._id)}> <FaRegTrashAlt /></button>
+  </div>
             <p><small>Created on: {new Date(poll.createdAt).toLocaleDateString()}</small></p>
             <ul>
               {poll.options.map((option, index) => (

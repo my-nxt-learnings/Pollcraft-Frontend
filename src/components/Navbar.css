@@ -7,11 +7,20 @@
     color: white;
   }
   
+  
+
+  .nav-links {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+  }
+  
   .nav-links a {
     margin-left: 1rem;
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     font-weight: 500;
+    transition: color 0.2s ease;
   }
   
   .nav-links a:hover {

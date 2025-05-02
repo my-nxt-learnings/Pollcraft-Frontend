@@ -64,7 +64,6 @@ function CreatePoll() {
             placeholder={`Option ${idx + 1}`}
             value={opt}
             onChange={(e) => handleOptionChange(idx, e.target.value)}
-            required
           />
         ))}
 
